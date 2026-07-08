@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskBoard</title>
+  </head>
+  <body>
+    <header>
+      <h1>TaskBoard</h1>
+      <p>Basit görev takip uygulaması</p>
+    </header>
+    <main>
+      <section aria-labelledby="task-list-title">
+        <h2 id="task-list-title">Görevler</h2>
+        <ul>
+          <li>Henüz görev eklenmedi.</li>
+        </ul>
+      </section>
+      <section aria-labelledby="new-task-title">
+        <h2 id="new-task-title">Yeni Görev</h2>
+        <form>
+          <label for="task-title">Görev başlığı</label>
+          <input id="task-title" name="title" required />
+          <button type="submit">Ekle</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>TaskBoard - Staj Projesi</p>
+    </footer>
+  </body>
+</html>
