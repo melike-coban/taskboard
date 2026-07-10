@@ -32,3 +32,13 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Form alanlarına `required`, `maxlength` ve `placeholder` özellikleri eklendi.
 - Tabloya üç örnek görev eklendi.
 - Form alanlarında `label` kullanılarak erişilebilirlik iyileştirildi.
+
+### Gün 3
+
+- CSS dosyası (`style.css`) oluşturuldu ve HTML dosyasına bağlandı.
+- Sayfaya temel font, arka plan rengi ve boşluk düzeni eklendi.
+- Görev tablosu ve görev ekleme formu kart (card) görünümüne dönüştürüldü.
+- Öncelik seviyeleri için renkli badge sınıfları oluşturuldu.
+- Form butonuna hover efekti eklendi.
+- CSS değişkenleri kullanılarak tekrar eden renk ve boşluk değerleri düzenlendi.
+- Tablo okunabilirliğini artıracak satır boşlukları ve temel stiller eklendi.

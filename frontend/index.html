@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskBoard</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header>
@@ -13,7 +14,7 @@
     <main>
       <section aria-labelledby="task-list-title">
         <h2 id="task-list-title">Görevler</h2>
-        <table>
+        <table class="task-table">
           <thead>
             <tr>
               <th>Başlık</th>
@@ -25,24 +26,25 @@
           <tbody>
             <tr>
               <td>HTML Formları</td>
-              <td>Yüksek</td>
+              <td><span class="badge high">Yüksek</span></td>
               <td>Devam Ediyor</td>
               <td>10.07.2026</td>
             </tr>
             <tr>
               <td>CSS Düzeni</td>
-              <td>Normal</td>
+              <td><span class="badge normal">Normal</span></td>
               <td>Bekliyor</td>
               <td>10.07.2026</td>
             </tr>
             <tr>
               <td>JavaScript Başlangıç</td>
-              <td>Düşük</td>
+              <td><span class="badge low">Düşük</span></td>
               <td>Tamamlandı</td>
               <td>10.07.2026</td>
             </tr>
           </tbody>
         </table>
+        <section class="card" aria-labelledby="task-list-title"></section>
       </section>
       <section aria-labelledby="new-task-title">
         <h2 id="new-task-title">Yeni Görev</h2>
@@ -69,8 +71,9 @@
             rows="4"
             placeholder="Görev açıklamasını yazınız"
           ></textarea>
-          <button type="submit">Ekle</button>
+          <button class="btn" type="submit">Ekle</button>
         </form>
+        <section class="card" aria-labelledby="new-task-title"></section>
       </section>
     </main>
     <footer>

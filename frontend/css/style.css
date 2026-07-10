@@ -1,0 +1,67 @@
+:root {
+  --bg-color: #f4f6f8;
+  --card-color: #ffffff;
+  --primary-color: #2563eb;
+  --spacing: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-color);
+  color: #17202a;
+  padding: var(--spacing);
+}
+.card {
+  background: var(--card-color);
+  border-radius: 12px;
+  padding: var(--spacing);
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.badge {
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.high {
+  background: #ef4444;
+}
+
+.normal {
+  background: #f59e0b;
+}
+
+.low {
+  background: #22c55e;
+}
+.btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-table th,
+.task-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
