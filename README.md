@@ -42,3 +42,11 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Form butonuna hover efekti eklendi.
 - CSS değişkenleri kullanılarak tekrar eden renk ve boşluk değerleri düzenlendi.
 - Tablo okunabilirliğini artıracak satır boşlukları ve temel stiller eklendi.
+
+### Gün 4
+
+- Dashboard bölümüne Toplam Görev, Açık Görev ve Tamamlanan görevleri gösteren KPI kartları eklendi.
+- KPI kartları CSS Grid kullanılarak düzenlendi.
+- Form ve görev listesi masaüstünde iki sütun, mobilde tek sütun olacak şekilde responsive hale getirildi.
+- Tablo için `overflow-x` özelliği eklenerek küçük ekranlarda yatay kaydırma desteği sağlandı.
+- Sayfanın 390px, 768px ve 1280px ekran genişliklerinde görünümü kontrol edildi.

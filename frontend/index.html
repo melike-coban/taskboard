@@ -12,68 +12,88 @@
       <p>Basit görev takip uygulaması</p>
     </header>
     <main>
-      <section aria-labelledby="task-list-title">
-        <h2 id="task-list-title">Görevler</h2>
-        <table class="task-table">
-          <thead>
-            <tr>
-              <th>Başlık</th>
-              <th>Öncelik</th>
-              <th>Durum</th>
-              <th>Oluşturma Tarihi</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>HTML Formları</td>
-              <td><span class="badge high">Yüksek</span></td>
-              <td>Devam Ediyor</td>
-              <td>10.07.2026</td>
-            </tr>
-            <tr>
-              <td>CSS Düzeni</td>
-              <td><span class="badge normal">Normal</span></td>
-              <td>Bekliyor</td>
-              <td>10.07.2026</td>
-            </tr>
-            <tr>
-              <td>JavaScript Başlangıç</td>
-              <td><span class="badge low">Düşük</span></td>
-              <td>Tamamlandı</td>
-              <td>10.07.2026</td>
-            </tr>
-          </tbody>
-        </table>
-        <section class="card" aria-labelledby="task-list-title"></section>
+      <section class="dashboard-grid" aria-label="Görev Özeti">
+        <article class="card">
+          <h3>Toplam Görev</h3>
+          <p>3</p>
+        </article>
+
+        <article class="card">
+          <h3>Açık Görev</h3>
+          <p>2</p>
+        </article>
+
+        <article class="card">
+          <h3>Tamamlanan</h3>
+          <p>1</p>
+        </article>
       </section>
-      <section aria-labelledby="new-task-title">
-        <h2 id="new-task-title">Yeni Görev</h2>
-        <form id="task-form">
-          <label for="task-title">Görev başlığı</label>
-          <input
-            type="text"
-            id="task-title"
-            name="title"
-            placeholder="Görev başlığını giriniz"
-            maxlength="80"
-            required
-          />
-          <label for="priority">Öncelik</label>
-          <select id="priority" name="priority">
-            <option value="low">Düşük</option>
-            <option value="normal">Normal</option>
-            <option value="high">Yüksek</option>
-          </select>
-          <label for="description">Görev Açıklaması</label>
-          <textarea
-            id="description"
-            name="description"
-            rows="4"
-            placeholder="Görev açıklamasını yazınız"
-          ></textarea>
-          <button class="btn" type="submit">Ekle</button>
-        </form>
-        <section class="card" aria-labelledby="new-task-title"></section>
+      <section class="content-layout">
+        <section aria-labelledby="task-list-title">
+          <h2 id="task-list-title">Görevler</h2>
+          <div class="table-wrapper">
+            <table class="task-table">
+              <thead>
+                <tr>
+                  <th>Başlık</th>
+                  <th>Öncelik</th>
+                  <th>Durum</th>
+                  <th>Oluşturma Tarihi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HTML Formları</td>
+                  <td><span class="badge high">Yüksek</span></td>
+                  <td>Devam Ediyor</td>
+                  <td>10.07.2026</td>
+                </tr>
+                <tr>
+                  <td>CSS Düzeni</td>
+                  <td><span class="badge normal">Normal</span></td>
+                  <td>Bekliyor</td>
+                  <td>10.07.2026</td>
+                </tr>
+                <tr>
+                  <td>JavaScript Başlangıç</td>
+                  <td><span class="badge low">Düşük</span></td>
+                  <td>Tamamlandı</td>
+                  <td>10.07.2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <section class="card" aria-labelledby="task-list-title"></section>
+        </section>
+        <section aria-labelledby="new-task-title">
+          <h2 id="new-task-title">Yeni Görev</h2>
+          <form id="task-form">
+            <label for="task-title">Görev başlığı</label>
+            <input
+              type="text"
+              id="task-title"
+              name="title"
+              placeholder="Görev başlığını giriniz"
+              maxlength="80"
+              required
+            />
+            <label for="priority">Öncelik</label>
+            <select id="priority" name="priority">
+              <option value="low">Düşük</option>
+              <option value="normal">Normal</option>
+              <option value="high">Yüksek</option>
+            </select>
+            <label for="description">Görev Açıklaması</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              placeholder="Görev açıklamasını yazınız"
+            ></textarea>
+            <button class="btn" type="submit">Ekle</button>
+          </form>
+          <section class="card" aria-labelledby="new-task-title"></section>
+        </section>
       </section>
     </main>
     <footer>
