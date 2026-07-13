@@ -50,3 +50,12 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Form ve görev listesi masaüstünde iki sütun, mobilde tek sütun olacak şekilde responsive hale getirildi.
 - Tablo için `overflow-x` özelliği eklenerek küçük ekranlarda yatay kaydırma desteği sağlandı.
 - Sayfanın 390px, 768px ve 1280px ekran genişliklerinde görünümü kontrol edildi.
+
+### Gün 5
+
+- TaskBoard sayfası dashboard görünümüne dönüştürüldü.
+- KPI kartları güncellenerek görev istatistikleri gösterildi.
+- Görev listesi ve yeni görev formu kart yapısına dönüştürüldü.
+- Görev tablosuna 5 örnek görev eklendi.
+- Öncelik ve durum bilgileri renkli badge yapısıyla gösterildi.
+- Boş görev listesi için Empty State bölümü eklendi.

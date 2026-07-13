@@ -15,21 +15,23 @@
       <section class="dashboard-grid" aria-label="Görev Özeti">
         <article class="card">
           <h3>Toplam Görev</h3>
-          <p>3</p>
+          <p>5</p>
         </article>
-
         <article class="card">
           <h3>Açık Görev</h3>
           <p>2</p>
         </article>
-
+        <article class="card">
+          <h3>Devam Eden</h3>
+          <p>2</p>
+        </article>
         <article class="card">
           <h3>Tamamlanan</h3>
           <p>1</p>
         </article>
       </section>
       <section class="content-layout">
-        <section aria-labelledby="task-list-title">
+        <section class="card" aria-labelledby="task-list-title">
           <h2 id="task-list-title">Görevler</h2>
           <div class="table-wrapper">
             <table class="task-table">
@@ -45,27 +47,48 @@
                 <tr>
                   <td>HTML Formları</td>
                   <td><span class="badge high">Yüksek</span></td>
-                  <td>Devam Ediyor</td>
+                  <td>
+                    <span class="status status-progress">Devam Ediyor</span>
+                  </td>
                   <td>10.07.2026</td>
                 </tr>
                 <tr>
                   <td>CSS Düzeni</td>
                   <td><span class="badge normal">Normal</span></td>
-                  <td>Bekliyor</td>
+                  <td><span class="status status-open">Açık</span></td>
                   <td>10.07.2026</td>
                 </tr>
+
                 <tr>
                   <td>JavaScript Başlangıç</td>
                   <td><span class="badge low">Düşük</span></td>
-                  <td>Tamamlandı</td>
+                  <td><span class="status status-done">Tamamlandı</span></td>
                   <td>10.07.2026</td>
+                </tr>
+                <tr>
+                  <td>README Güncelleme</td>
+                  <td><span class="badge low">Düşük</span></td>
+                  <td><span class="status status-open">Açık</span></td>
+                  <td>13.07.2026</td>
+                </tr>
+
+                <tr>
+                  <td>GitHub Commit</td>
+                  <td><span class="badge high">Yüksek</span></td>
+                  <td>
+                    <span class="status status-progress">Devam Ediyor</span>
+                  </td>
+                  <td>13.07.2026</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <section class="card" aria-labelledby="task-list-title"></section>
+          <section class="empty-state" hidden>
+            <h2>Henüz görev yok</h2>
+            <p>İlk görevi ekleyerek panoyu başlat.</p>
+          </section>
         </section>
-        <section aria-labelledby="new-task-title">
+        <section class="card" aria-labelledby="new-task-title">
           <h2 id="new-task-title">Yeni Görev</h2>
           <form id="task-form">
             <label for="task-title">Görev başlığı</label>
@@ -92,7 +115,6 @@
             ></textarea>
             <button class="btn" type="submit">Ekle</button>
           </form>
-          <section class="card" aria-labelledby="new-task-title"></section>
         </section>
       </section>
     </main>

@@ -31,6 +31,25 @@ body {
   font-size: 13px;
   font-weight: bold;
 }
+.status {
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status-open {
+  background: #2563eb;
+}
+
+.status-progress {
+  background: #f59e0b;
+}
+
+.status-done {
+  background: #22c55e;
+}
 
 .high {
   background: #ef4444;
@@ -93,7 +112,7 @@ body {
 }
 @media (min-width: 768px) {
   .dashboard-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+   grid-template-columns: repeat(4, 1fr);
   }
 
   .content-layout {
@@ -107,4 +126,20 @@ body {
 .task-table {
   width: 100%;
   min-width: 600px;
+}
+.empty-state {
+  margin-top: 20px;
+  padding: 30px;
+  text-align: center;
+  background: var(--card-color);
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+}
+
+.empty-state h2 {
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: #6b7280;
 }
