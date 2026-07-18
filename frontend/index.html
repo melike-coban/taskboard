@@ -15,19 +15,22 @@
       <section class="dashboard-grid" aria-label="Görev Özeti">
         <article class="card">
           <h3>Toplam Görev</h3>
-          <p>5</p>
+          <p id="total-count">5</p>
         </article>
+
         <article class="card">
           <h3>Açık Görev</h3>
-          <p>2</p>
+          <p id="open-count">2</p>
         </article>
+
         <article class="card">
           <h3>Devam Eden</h3>
-          <p>2</p>
+          <p id="progress-count">2</p>
         </article>
+
         <article class="card">
           <h3>Tamamlanan</h3>
-          <p>1</p>
+          <p id="done-count">1</p>
         </article>
       </section>
       <section class="content-layout">
@@ -43,7 +46,7 @@
                   <th>Oluşturma Tarihi</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="task-table-body">
                 <tr>
                   <td>HTML Formları</td>
                   <td><span class="badge high">Yüksek</span></td>
@@ -121,5 +124,6 @@
     <footer>
       <p>TaskBoard - Staj Projesi</p>
     </footer>
+    <script src="js/app.js"></script>
   </body>
 </html>

@@ -59,3 +59,13 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Görev tablosuna 5 örnek görev eklendi.
 - Öncelik ve durum bilgileri renkli badge yapısıyla gösterildi.
 - Boş görev listesi için Empty State bölümü eklendi.
+
+### Gün 6
+
+- JavaScript için `app.js` dosyası oluşturuldu ve HTML dosyasına bağlandı.
+- Formun `submit` olayı JavaScript ile yakalandı.
+- Kullanıcının girdiği görev başlığı ve öncelik bilgileri okunarak tabloya dinamik olarak eklendi.
+- Boş görev başlığı kontrolü yapılarak hatalı girişler engellendi.
+- Görev eklendikten sonra form temizlendi ve imleç tekrar görev başlığı alanına getirildi.
+- Toplam Görev ve Açık Görev KPI kartları otomatik güncellendi.
+- Görev sayısına göre Empty State görünümü kontrol edildi.
