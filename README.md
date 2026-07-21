@@ -81,3 +81,14 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Tamamla butonu ile görevlerin durumu silinmeden güncellenebilir hale getirildi.
 - Toplam Görev, Açık Görev ve Tamamlanan Görev KPI kartları `tasks` dizisi üzerinden otomatik hesaplanacak şekilde düzenlendi.
 - `map()`, `filter()` ve `find()` array metotları kullanılarak kod tekrarları azaltıldı.
+
+### Gün 8
+
+- Görevler localStorage kullanılarak tarayıcıya kaydedilecek şekilde düzenlendi.
+- Sayfa açılırken görevler localStorage üzerinden yüklenir hale getirildi.
+- JSON verisi güvenli şekilde okunarak olası parse hataları kontrol altına alındı.
+- `tasks.json` dosyası oluşturularak Fetch API ile örnek görevlerin okunması sağlandı.
+- `async/await` ve `try/catch` yapıları kullanılarak veri yükleme işlemleri gerçekleştirildi.
+- Örnek görevleri içeri aktarma özelliği eklendi.
+- LocalStorage verilerini temizleme özelliği eklendi.
+- Kullanıcıya yükleme ve hata durumları hakkında bilgilendirme mesajları gösterilecek şekilde düzenleme yapıldı.

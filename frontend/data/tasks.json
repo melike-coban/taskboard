@@ -1,0 +1,23 @@
+[
+  {
+    "id": 101,
+    "title": "Fetch API Öğren",
+    "priority": "high",
+    "status": "open",
+    "createdAt": "18.07.2026"
+  },
+  {
+    "id": 102,
+    "title": "JSON Dosyasını Oku",
+    "priority": "normal",
+    "status": "done",
+    "createdAt": "18.07.2026"
+  },
+  {
+    "id": 103,
+    "title": "LocalStorage Testi",
+    "priority": "low",
+    "status": "open",
+    "createdAt": "18.07.2026"
+  }
+]

@@ -11,6 +11,9 @@ const progressCount = document.querySelector("#progress-count");
 const emptyState = document.querySelector(".empty-state");
 const statusFilter = document.querySelector("#status-filter");
 const priorityFilter = document.querySelector("#priority-filter");
+const loadSampleBtn = document.querySelector("#load-sample-btn");
+const clearStorageBtn = document.querySelector("#clear-storage-btn");
+const message = document.querySelector("#message");
 
 let tasks = [];
 
@@ -25,6 +28,8 @@ form.addEventListener("submit", function (event) {
   const newTask = createTask(title, priority);
 
   tasks.push(newTask);
+
+  saveTasks();
 
   applyFilters();
 
@@ -111,6 +116,53 @@ function updateCounts() {
 
   progressCount.textContent = 0;
 }
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+function loadTasks() {
+  const raw = localStorage.getItem("tasks");
+
+  try {
+    tasks = raw ? JSON.parse(raw) : [];
+  } catch (error) {
+    console.error("LocalStorage verisi okunamadı:", error);
+
+    tasks = [];
+
+    localStorage.removeItem("tasks");
+  }
+
+  renderTasks(tasks);
+}
+async function loadSampleTasks() {
+  message.textContent = "Yükleniyor...";
+  try {
+    const response = await fetch("./data/tasks.json");
+
+    if (!response.ok) {
+      throw new Error("Örnek görevler yüklenemedi.");
+    }
+
+    const sampleTasks = await response.json();
+
+    sampleTasks.forEach((sampleTask) => {
+      const exists = tasks.find((task) => task.id === sampleTask.id);
+
+      if (!exists) {
+        tasks.push(sampleTask);
+      }
+    });
+
+    saveTasks();
+    message.textContent = "Örnek görevler başarıyla yüklendi.";
+
+    applyFilters();
+  } catch (error) {
+    message.textContent = error.message;
+
+    console.error(error);
+  }
+}
 
 function updateEmptyState() {
   if (tasks.length === 0) {
@@ -152,34 +204,52 @@ tableBody.addEventListener("click", function (event) {
 
   task.status = "done";
 
+  saveTasks();
+
+  applyFilters();
+});
+priorityFilter.addEventListener("change", function () {
   applyFilters();
 });
 
-tasks.push(
-  {
-    id: 1,
-    title: "HTML Formları",
-    priority: "high",
-    status: "open",
-    createdAt: "10.07.2026",
-  },
-  {
-    id: 2,
-    title: "CSS Düzeni",
-    priority: "normal",
-    status: "open",
-    createdAt: "10.07.2026",
-  },
-  {
-    id: 3,
-    title: "JavaScript Başlangıç",
-    priority: "low",
-    status: "done",
-    createdAt: "10.07.2026",
-  },
-);
+if (!localStorage.getItem("tasks")) {
+  tasks.push(
+    {
+      id: 1,
+      title: "HTML Formları",
+      priority: "high",
+      status: "open",
+      createdAt: "10.07.2026",
+    },
+    {
+      id: 2,
+      title: "CSS Düzeni",
+      priority: "normal",
+      status: "open",
+      createdAt: "10.07.2026",
+    },
+    {
+      id: 3,
+      title: "JavaScript Başlangıç",
+      priority: "low",
+      status: "done",
+      createdAt: "10.07.2026",
+    },
+  );
 
-renderTasks(tasks);
-priorityFilter.addEventListener("change", function () {
-  applyFilters();
+  saveTasks();
+}
+
+loadTasks();
+loadSampleBtn.addEventListener("click", function () {
+  loadSampleTasks();
+});
+clearStorageBtn.addEventListener("click", function () {
+  localStorage.removeItem("tasks");
+
+  tasks = [];
+
+  renderTasks(tasks);
+
+  message.textContent = "Görevler temizlendi.";
 });

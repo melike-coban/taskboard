@@ -151,3 +151,8 @@ body {
   padding: 8px;
   border-radius: 8px;
 }
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #2563eb;
+}
