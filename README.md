@@ -69,3 +69,15 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Görev eklendikten sonra form temizlendi ve imleç tekrar görev başlığı alanına getirildi.
 - Toplam Görev ve Açık Görev KPI kartları otomatik güncellendi.
 - Görev sayısına göre Empty State görünümü kontrol edildi.
+
+### Gün 7
+
+- Görevler için `tasks` adında bir dizi (state) oluşturuldu.
+- `createTask()` fonksiyonu ile yeni görev nesneleri oluşturulacak şekilde düzenleme yapıldı.
+- `renderTasks()` fonksiyonu kullanılarak görev tablosu dinamik olarak oluşturuldu.
+- Yeni görevler doğrudan tabloya eklenmek yerine `tasks` dizisine eklenmeye başlandı.
+- Duruma göre filtreleme (Tümü, Açık, Tamamlandı) özelliği eklendi.
+- Önceliğe göre filtreleme özelliği eklendi.
+- Tamamla butonu ile görevlerin durumu silinmeden güncellenebilir hale getirildi.
+- Toplam Görev, Açık Görev ve Tamamlanan Görev KPI kartları `tasks` dizisi üzerinden otomatik hesaplanacak şekilde düzenlendi.
+- `map()`, `filter()` ve `find()` array metotları kullanılarak kod tekrarları azaltıldı.

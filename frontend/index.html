@@ -36,6 +36,23 @@
       <section class="content-layout">
         <section class="card" aria-labelledby="task-list-title">
           <h2 id="task-list-title">Görevler</h2>
+          <div class="filters">
+            <label for="status-filter">Durum</label>
+
+            <select id="status-filter">
+              <option value="all">Tümü</option>
+              <option value="open">Açık</option>
+              <option value="done">Tamamlandı</option>
+            </select>
+            <label for="priority-filter">Öncelik</label>
+
+            <select id="priority-filter">
+              <option value="all">Tümü</option>
+              <option value="high">Yüksek</option>
+              <option value="normal">Normal</option>
+              <option value="low">Düşük</option>
+            </select>
+          </div>
           <div class="table-wrapper">
             <table class="task-table">
               <thead>
@@ -44,46 +61,10 @@
                   <th>Öncelik</th>
                   <th>Durum</th>
                   <th>Oluşturma Tarihi</th>
+                  <th>İşlem</th>
                 </tr>
               </thead>
-              <tbody id="task-table-body">
-                <tr>
-                  <td>HTML Formları</td>
-                  <td><span class="badge high">Yüksek</span></td>
-                  <td>
-                    <span class="status status-progress">Devam Ediyor</span>
-                  </td>
-                  <td>10.07.2026</td>
-                </tr>
-                <tr>
-                  <td>CSS Düzeni</td>
-                  <td><span class="badge normal">Normal</span></td>
-                  <td><span class="status status-open">Açık</span></td>
-                  <td>10.07.2026</td>
-                </tr>
-
-                <tr>
-                  <td>JavaScript Başlangıç</td>
-                  <td><span class="badge low">Düşük</span></td>
-                  <td><span class="status status-done">Tamamlandı</span></td>
-                  <td>10.07.2026</td>
-                </tr>
-                <tr>
-                  <td>README Güncelleme</td>
-                  <td><span class="badge low">Düşük</span></td>
-                  <td><span class="status status-open">Açık</span></td>
-                  <td>13.07.2026</td>
-                </tr>
-
-                <tr>
-                  <td>GitHub Commit</td>
-                  <td><span class="badge high">Yüksek</span></td>
-                  <td>
-                    <span class="status status-progress">Devam Ediyor</span>
-                  </td>
-                  <td>13.07.2026</td>
-                </tr>
-              </tbody>
+              <tbody id="task-table-body"></tbody>
             </table>
           </div>
           <section class="empty-state" hidden>
