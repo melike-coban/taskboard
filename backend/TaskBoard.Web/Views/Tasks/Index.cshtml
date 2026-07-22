@@ -1,0 +1,62 @@
+@model List<TaskBoard.Web.Models.TaskItem>
+
+@{
+    ViewData["Title"] = ViewData["Title"] ?? "Görevler";
+}
+
+<div class="container mt-4">
+
+    <h1 class="text-center mb-4">TaskBoard Görev Listesi</h1>
+
+    <table class="table table-hover table-striped table-bordered shadow">
+
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Başlık</th>
+                <th>Öncelik</th>
+                <th>Durum</th>
+                <th>Oluşturma Tarihi</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var task in Model)
+            {
+                <tr>
+                    <td>@task.Id</td>
+                    <td>@task.Title</td>
+                    <td>
+    @if (task.Priority == "Yüksek")
+    {
+        <span class="badge bg-danger">Yüksek</span>
+    }
+    else if (task.Priority == "Normal")
+    {
+        <span class="badge bg-warning text-dark">Normal</span>
+    }
+    else
+    {
+        <span class="badge bg-success">Düşük</span>
+    }
+</td>
+                    <td>
+    @if (task.Status == "Open")
+    {
+        <span class="badge bg-primary">Open</span>
+    }
+    else
+    {
+        <span class="badge bg-success">Done</span>
+    }
+</td>
+                    <td>@task.CreatedAt.ToString("dd.MM.yyyy")</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

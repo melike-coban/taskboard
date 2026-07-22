@@ -92,3 +92,33 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Örnek görevleri içeri aktarma özelliği eklendi.
 - LocalStorage verilerini temizleme özelliği eklendi.
 - Kullanıcıya yükleme ve hata durumları hakkında bilgilendirme mesajları gösterilecek şekilde düzenleme yapıldı.
+
+### Gün 9
+
+- `TaskBoard.Console` isimli C# Console projesi oluşturuldu.
+- Görevleri listeleme, ekleme ve çıkış işlemlerini içeren bir menü geliştirildi.
+- Kullanıcıdan görev başlığı ve öncelik bilgisi alınarak görevler `List<string>` içerisinde saklandı.
+- Boş görev başlığı kontrolü eklenerek hatalı girişler engellendi.
+- Görevler numaralı şekilde listelenecek şekilde düzenlendi.
+- Hatalı menü seçimlerinde kullanıcıya uyarı mesajı gösterildi.
+- Kod okunabilirliği artırmak amacıyla görev ekleme ve listeleme işlemleri metotlara ayrıldı.
+
+### Gün 10
+
+- `TaskItem` modeli oluşturularak görevler nesne tabanlı yapıya dönüştürüldü.
+- `TaskStatus` enumu eklenerek görev durumları yönetilebilir hale getirildi.
+- `TaskService` sınıfı oluşturularak görev ekleme, listeleme ve tamamlama işlemleri servis katmanına taşındı.
+- Console menüsü `TaskService` üzerinden çalışacak şekilde yeniden düzenlendi.
+- LINQ kullanılarak sadece açık görevleri listeleme özelliği eklendi.
+- Aynı başlıkla görev eklenmesi engellendi.
+- Görev tamamlandığında `CompletedAt` alanı otomatik olarak doldurulacak şekilde düzenleme yapıldı.
+
+### Gün 11
+
+- ASP.NET Core MVC kullanılarak `TaskBoard.Web` projesi oluşturuldu.
+- `TaskItem` modeli eklenerek görev verileri nesne tabanlı hale getirildi.
+- `TasksController` oluşturularak örnek görev listesi Controller üzerinden View'a gönderildi.
+- Razor View kullanılarak görevler dinamik olarak tabloda listelendi.
+- Bootstrap ile tablo tasarımı iyileştirildi.
+- Görev durumu ve öncelik bilgileri Bootstrap badge bileşenleri ile görsel olarak gösterildi.
+- `ViewData` kullanılarak sayfa başlığı dinamik hale getirildi.
