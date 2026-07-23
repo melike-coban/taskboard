@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskBoard.Web.Models;
+using TaskBoard.Web.ViewModels;
 
 namespace TaskBoard.Web.Controllers;
 
@@ -49,4 +50,20 @@ new TaskItem
 ViewData["Title"] = "Görev Listesi";
         return View(tasks);
     }
+    [HttpGet]
+public IActionResult Create()
+{
+    return View();
+}
+
+[HttpPost]
+public IActionResult Create(CreateTaskViewModel model)
+{
+    if (!ModelState.IsValid)
+    {
+        return View(model);
+    }
+
+    return RedirectToAction(nameof(Index));
+}
 }

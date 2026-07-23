@@ -122,3 +122,14 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Bootstrap ile tablo tasarımı iyileştirildi.
 - Görev durumu ve öncelik bilgileri Bootstrap badge bileşenleri ile görsel olarak gösterildi.
 - `ViewData` kullanılarak sayfa başlığı dinamik hale getirildi.
+
+### Gün 12
+
+- CreateTaskViewModel oluşturularak form verileri için ayrı bir ViewModel kullanıldı.
+- Title alanına Required ve StringLength doğrulamaları eklendi.
+- Description alanı eklenerek maksimum 500 karakter sınırı tanımlandı.
+- TasksController içerisinde Create için GET ve POST action metotları oluşturuldu.
+- Create.cshtml sayfası asp-for tag helper'ları kullanılarak hazırlandı.
+- Validation Summary ve alan bazlı doğrulama mesajları eklendi.
+- Priority alanı select listesi olarak tasarlandı.
+- Başarılı form gönderiminde kullanıcı görev listesi sayfasına yönlendirildi.
