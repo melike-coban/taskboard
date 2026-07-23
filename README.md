@@ -133,3 +133,13 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Validation Summary ve alan bazlı doğrulama mesajları eklendi.
 - Priority alanı select listesi olarak tasarlandı.
 - Başarılı form gönderiminde kullanıcı görev listesi sayfasına yönlendirildi.
+
+### Gün 13
+
+- ASP.NET Core Web API projesi geliştirilmeye devam edildi.
+- TasksApiController oluşturularak görev işlemleri API üzerinden yönetildi.
+- GET endpointi ile görevlerin listelenmesi sağlandı.
+- POST endpointi ile yeni görev ekleme işlemi gerçekleştirildi.
+- PATCH endpointi ile görevlerin tamamlandı durumuna geçirilmesi eklendi.
+- Swagger kurulumu yapılarak API endpointleri test edildi.
+- Endpointlerin doğru HTTP durum kodları ile çalıştığı doğrulandı.

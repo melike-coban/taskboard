@@ -96,3 +96,10 @@ C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\obj\Debug\net10.0\refin
 C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\obj\Debug\net10.0\TaskBoard.Web.pdb
 C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\obj\Debug\net10.0\TaskBoard.Web.genruntimeconfig.cache
 C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\obj\Debug\net10.0\ref\TaskBoard.Web.dll
+C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\obj\Debug\net10.0\TaskBoard.Web.csproj.AssemblyReference.cache
+C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\obj\Debug\net10.0\TaskBoard.Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\obj\Debug\net10.0\TaskBoar.9076C674.Up2Date
