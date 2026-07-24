@@ -143,3 +143,14 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - PATCH endpointi ile görevlerin tamamlandı durumuna geçirilmesi eklendi.
 - Swagger kurulumu yapılarak API endpointleri test edildi.
 - Endpointlerin doğru HTTP durum kodları ile çalıştığı doğrulandı.
+
+### Gün 14
+
+- Entity Framework Core projeye eklendi.
+- TaskBoardDbContext oluşturuldu ve TaskItems DbSet'i tanımlandı.
+- SQLite bağlantısı için appsettings.json dosyasına connection string eklendi.
+- Program.cs içerisinde DbContext yapılandırması gerçekleştirildi.
+- İlk migration oluşturularak veritabanı oluşturuldu.
+- API, static liste yerine Entity Framework Core üzerinden veritabanı kullanacak şekilde güncellendi.
+- TaskItem modeli için doğrulama ve varsayılan değer düzenlemeleri yapıldı.
+- Veritabanına başlangıç için örnek görev kayıtları eklendi.
