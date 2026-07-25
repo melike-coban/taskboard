@@ -163,3 +163,13 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - CRUD işlemleri (Listeleme, Ekleme, Güncelleme ve Silme) service katmanı üzerinden gerçekleştirildi.
 - Controller sadeleştirilerek yalnızca HTTP isteklerini yöneten bir yapı oluşturuldu.
 - Asenkron (async/await) metotlar kullanılarak veritabanı işlemleri düzenlendi.
+
+### Gün 16
+
+- Frontend ile ASP.NET Core Web API arasında bağlantı kuruldu.
+- API isteklerini yönetmek için `apiClient.js` oluşturuldu.
+- Görev listeleme işlemi API üzerinden gerçekleştirildi.
+- Yeni görev ekleme ve görev silme işlemleri API kullanılarak yapıldı.
+- Tüm görevleri silmek için yeni bir API endpointi geliştirildi.
+- Frontend, API'den gelen verilere göre KPI kartlarını güncelleyecek şekilde düzenlendi.
+- CORS yapılandırması yapılarak frontend ve backend iletişimi sağlandı.

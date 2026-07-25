@@ -17,7 +17,7 @@ const message = document.querySelector("#message");
 
 let tasks = [];
 
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const title = titleInput.value.trim();
@@ -25,13 +25,19 @@ form.addEventListener("submit", function (event) {
 
   if (!title) return;
 
-  const newTask = createTask(title, priority);
+  try {
+    await taskApi.createTask({
+      title: title,
+      priority: priority,
+      description: "",
+    });
 
-  tasks.push(newTask);
+    await loadTasks();
 
-  saveTasks();
-
-  applyFilters();
+    message.textContent = "Görev başarıyla eklendi.";
+  } catch (error) {
+    message.textContent = error.message;
+  }
 
   form.reset();
   titleInput.focus();
@@ -67,7 +73,7 @@ function renderTasks(items) {
       let statusClass = "";
       let statusText = "";
 
-      if (task.status === "open") {
+      if (task.status === "Open") {
         statusClass = "status-open";
         statusText = "Açık";
       } else {
@@ -94,10 +100,14 @@ function renderTasks(items) {
         <td>${task.createdAt}</td>
 
         <td>
-          <button class="btn complete-btn" data-id="${task.id}">
-            Tamamla
-          </button>
-        </td>
+  <button class="btn complete-btn" data-id="${task.id}">
+    Tamamla
+  </button>
+
+  <button class="btn delete-btn" data-id="${task.id}">
+    Sil
+  </button>
+</td>
       </tr>
       `;
     })
@@ -110,29 +120,24 @@ function renderTasks(items) {
 function updateCounts() {
   totalCount.textContent = tasks.length;
 
-  openCount.textContent = tasks.filter((task) => task.status === "open").length;
+  openCount.textContent = tasks.filter((task) => task.status === "Open").length;
 
-  doneCount.textContent = tasks.filter((task) => task.status === "done").length;
+  doneCount.textContent = tasks.filter((task) => task.status === "Done").length;
 
+  // Şimdilik "Devam Eden" bilgisi backend'de olmadığı için 0 bırakıyoruz.
   progressCount.textContent = 0;
 }
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
-function loadTasks() {
-  const raw = localStorage.getItem("tasks");
-
+async function loadTasks() {
   try {
-    tasks = raw ? JSON.parse(raw) : [];
+    tasks = await taskApi.getTasks();
+    renderTasks(tasks);
   } catch (error) {
-    console.error("LocalStorage verisi okunamadı:", error);
-
-    tasks = [];
-
-    localStorage.removeItem("tasks");
+    console.error(error);
+    message.textContent = "Görevler yüklenemedi.";
   }
-
-  renderTasks(tasks);
 }
 async function loadSampleTasks() {
   message.textContent = "Yükleniyor...";
@@ -193,63 +198,51 @@ statusFilter.addEventListener("change", function () {
   applyFilters();
 });
 
-tableBody.addEventListener("click", function (event) {
-  if (!event.target.classList.contains("complete-btn")) return;
-
+tableBody.addEventListener("click", async function (event) {
   const id = Number(event.target.dataset.id);
 
-  const task = tasks.find((task) => task.id === id);
+  if (event.target.classList.contains("delete-btn")) {
+    if (!confirm("Bu görevi silmek istediğinize emin misiniz?")) {
+      return;
+    }
 
-  if (!task) return;
+    try {
+      await taskApi.deleteTask(id);
+      await loadTasks();
+      message.textContent = "Görev silindi.";
+    } catch (error) {
+      message.textContent = error.message;
+    }
 
-  task.status = "done";
+    return;
+  }
 
-  saveTasks();
-
-  applyFilters();
+  if (event.target.classList.contains("complete-btn")) {
+    message.textContent =
+      "Tamamlama işlemi bir sonraki adımda API'ye bağlanacak.";
+  }
 });
 priorityFilter.addEventListener("change", function () {
   applyFilters();
 });
 
-if (!localStorage.getItem("tasks")) {
-  tasks.push(
-    {
-      id: 1,
-      title: "HTML Formları",
-      priority: "high",
-      status: "open",
-      createdAt: "10.07.2026",
-    },
-    {
-      id: 2,
-      title: "CSS Düzeni",
-      priority: "normal",
-      status: "open",
-      createdAt: "10.07.2026",
-    },
-    {
-      id: 3,
-      title: "JavaScript Başlangıç",
-      priority: "low",
-      status: "done",
-      createdAt: "10.07.2026",
-    },
-  );
-
-  saveTasks();
-}
-
 loadTasks();
 loadSampleBtn.addEventListener("click", function () {
   loadSampleTasks();
 });
-clearStorageBtn.addEventListener("click", function () {
-  localStorage.removeItem("tasks");
+clearStorageBtn.addEventListener("click", async function () {
+  if (!confirm("Tüm görevleri silmek istediğinize emin misiniz?")) {
+    return;
+  }
 
-  tasks = [];
+  try {
+    await taskApi.deleteAllTasks();
 
-  renderTasks(tasks);
+    await loadTasks();
 
-  message.textContent = "Görevler temizlendi.";
+    message.textContent = "Tüm görevler silindi.";
+  } catch (error) {
+    console.error(error);
+    message.textContent = "Görevler silinemedi.";
+  }
 });

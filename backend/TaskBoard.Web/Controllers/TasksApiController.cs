@@ -65,4 +65,11 @@ public class TasksApiController : ControllerBase
 
         return NoContent();
     }
+    [HttpDelete]
+public async Task<IActionResult> DeleteAll()
+{
+    await _taskService.DeleteAllAsync();
+
+    return NoContent();
+}
 }

@@ -68,4 +68,9 @@ public class TaskService : ITaskService
 
         return true;
     }
+    public async Task DeleteAllAsync()
+{
+    _context.TaskItems.RemoveRange(_context.TaskItems);
+    await _context.SaveChangesAsync();
+}
 }

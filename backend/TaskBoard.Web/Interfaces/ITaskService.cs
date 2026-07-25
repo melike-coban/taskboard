@@ -10,4 +10,5 @@ public interface ITaskService
     Task<TaskItem> CreateAsync(CreateTaskViewModel request);
     Task<bool> UpdateAsync(int id, CreateTaskViewModel request);
     Task<bool> DeleteAsync(int id);
+    Task DeleteAllAsync();
 }
