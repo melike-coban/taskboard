@@ -3,10 +3,21 @@ using Microsoft.EntityFrameworkCore;
 using TaskBoard.Web.Data;
 using TaskBoard.Web.Interfaces;
 using TaskBoard.Web.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services
+    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login";
+        options.AccessDeniedPath = "/Login";
+    });
+
+builder.Services.AddAuthorization();
 builder.Services.AddDbContext<TaskBoardDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
     builder.Services.AddScoped<ITaskService, TaskService>();
@@ -40,6 +51,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseAuthentication();
 app.UseCors("AllowFrontend");
 
 app.UseAuthorization();

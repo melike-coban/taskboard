@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskBoard.Web.Models;
 using TaskBoard.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TaskBoard.Web.Controllers;
-
+[Authorize]
 public class TasksController : Controller
 {
     public IActionResult Index()

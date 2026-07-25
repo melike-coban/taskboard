@@ -173,3 +173,15 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Tüm görevleri silmek için yeni bir API endpointi geliştirildi.
 - Frontend, API'den gelen verilere göre KPI kartlarını güncelleyecek şekilde düzenlendi.
 - CORS yapılandırması yapılarak frontend ve backend iletişimi sağlandı.
+
+### Gün 17
+
+- Demo kullanıcı modeli oluşturuldu.
+- appsettings.json içerisine Admin ve User kullanıcıları eklendi.
+- Login ekranı geliştirildi.
+- Cookie Authentication yapılandırıldı.
+- Kullanıcı giriş işlemi Claims tabanlı hale getirildi.
+- Authorize özelliği ile korumalı sayfalar oluşturuldu.
+- Rol bazlı yetkilendirme uygulandı.
+- Admin kullanıcılarına silme yetkisi verildi.
+- User kullanıcılarının silme işlemi yapması engellendi.

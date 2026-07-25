@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskBoard.Web.Interfaces;
 using TaskBoard.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TaskBoard.Web.Controllers;
 
@@ -52,7 +53,7 @@ public class TasksApiController : ControllerBase
 
         return NoContent();
     }
-
+[Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
@@ -65,6 +66,7 @@ public class TasksApiController : ControllerBase
 
         return NoContent();
     }
+    [Authorize(Roles = "Admin")]
     [HttpDelete]
 public async Task<IActionResult> DeleteAll()
 {
