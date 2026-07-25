@@ -154,3 +154,12 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - API, static liste yerine Entity Framework Core üzerinden veritabanı kullanacak şekilde güncellendi.
 - TaskItem modeli için doğrulama ve varsayılan değer düzenlemeleri yapıldı.
 - Veritabanına başlangıç için örnek görev kayıtları eklendi.
+
+### Gün 15
+
+- Service katmanı oluşturularak iş mantığı controller dışına taşındı.
+- ITaskService arayüzü tanımlandı ve TaskService sınıfı geliştirildi.
+- Dependency Injection kullanılarak TaskService uygulamaya eklendi.
+- CRUD işlemleri (Listeleme, Ekleme, Güncelleme ve Silme) service katmanı üzerinden gerçekleştirildi.
+- Controller sadeleştirilerek yalnızca HTTP isteklerini yöneten bir yapı oluşturuldu.
+- Asenkron (async/await) metotlar kullanılarak veritabanı işlemleri düzenlendi.

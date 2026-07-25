@@ -1,12 +1,15 @@
 using TaskBoard.Web.Models;
 using Microsoft.EntityFrameworkCore;
 using TaskBoard.Web.Data;
+using TaskBoard.Web.Interfaces;
+using TaskBoard.Web.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<TaskBoardDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

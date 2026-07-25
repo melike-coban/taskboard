@@ -1,7 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-using TaskBoard.Web.Data;
 using Microsoft.AspNetCore.Mvc;
-using TaskBoard.Web.Models;
+using TaskBoard.Web.Interfaces;
 using TaskBoard.Web.ViewModels;
 
 namespace TaskBoard.Web.Controllers;
@@ -10,54 +8,61 @@ namespace TaskBoard.Web.Controllers;
 [Route("api/tasks")]
 public class TasksApiController : ControllerBase
 {
-    private readonly TaskBoardDbContext _context;
+    private readonly ITaskService _taskService;
 
-public TasksApiController(TaskBoardDbContext context)
-{
-    _context = context;
-}
+    public TasksApiController(ITaskService taskService)
+    {
+        _taskService = taskService;
+    }
 
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        return Ok(_context.TaskItems.ToList());
+        var tasks = await _taskService.GetAllAsync();
+        return Ok(tasks);
     }
 
     [HttpPost]
-    public IActionResult Create(CreateTaskViewModel request)
+    public async Task<IActionResult> Create(CreateTaskViewModel request)
     {
-        if (string.IsNullOrWhiteSpace(request.Title))
+        if (!ModelState.IsValid)
         {
-            return BadRequest("Başlık zorunludur.");
+            return BadRequest(ModelState);
         }
 
-        var task = new TaskItem
-        {
-            Id = _context.TaskItems.Count() + 1,
-            Title = request.Title,
-            Priority = request.Priority,
-            Status = "Open",
-            CreatedAt = DateTime.Now
-        };
-
-        _context.TaskItems.Add(task);
-_context.SaveChanges();
+        var task = await _taskService.CreateAsync(request);
 
         return Created($"/api/tasks/{task.Id}", task);
     }
-    [HttpPatch("{id}/complete")]
-public IActionResult Complete(int id)
-{
-    var task = _context.TaskItems.FirstOrDefault(t => t.Id == id);
 
-    if (task == null)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, CreateTaskViewModel request)
     {
-        return NotFound();
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var updated = await _taskService.UpdateAsync(id, request);
+
+        if (!updated)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
     }
 
-    task.Status = "Done";
-    _context.SaveChanges();
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var deleted = await _taskService.DeleteAsync(id);
 
-    return Ok(task);
-}
+        if (!deleted)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
 }
