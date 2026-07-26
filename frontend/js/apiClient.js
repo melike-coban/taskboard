@@ -9,7 +9,17 @@ async function request(url, options = {}) {
   });
 
   if (!response.ok) {
-    throw new Error("İşlem başarısız oldu.");
+    let errorMessage = "İşlem başarısız oldu.";
+
+    try {
+      const error = await response.json();
+
+      if (error.message) {
+        errorMessage = error.message;
+      }
+    } catch {}
+
+    throw new Error(errorMessage);
   }
 
   if (response.status === 204) {

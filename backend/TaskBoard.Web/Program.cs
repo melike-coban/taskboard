@@ -48,7 +48,19 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+        context.Response.ContentType = "application/json";
 
+        await context.Response.WriteAsJsonAsync(new
+        {
+            message = "Beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyiniz."
+        });
+    });
+});
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthentication();

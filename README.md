@@ -185,3 +185,12 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Rol bazlı yetkilendirme uygulandı.
 - Admin kullanıcılarına silme yetkisi verildi.
 - User kullanıcılarının silme işlemi yapması engellendi.
+
+### Gün 18
+
+- Service katmanında Guard Clause kullanıldı.
+- Başlık alanı Trim() ile düzenlenerek kaydedildi.
+- ILogger ile oluşturma, güncelleme ve silme işlemleri loglandı.
+- Controller tarafında beklenen hatalar için uygun HTTP durum kodları döndürüldü.
+- Global Exception Handler eklendi.
+- Frontend tarafında API hata mesajları kullanıcıya gösterilecek şekilde düzenlendi.

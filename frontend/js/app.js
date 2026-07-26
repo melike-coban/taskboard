@@ -243,6 +243,6 @@ clearStorageBtn.addEventListener("click", async function () {
     message.textContent = "Tüm görevler silindi.";
   } catch (error) {
     console.error(error);
-    message.textContent = "Görevler silinemedi.";
+    message.textContent = error.message;
   }
 });

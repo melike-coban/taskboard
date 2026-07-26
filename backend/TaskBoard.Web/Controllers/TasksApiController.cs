@@ -23,27 +23,39 @@ public class TasksApiController : ControllerBase
         return Ok(tasks);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(CreateTaskViewModel request)
+   [HttpPost]
+public async Task<IActionResult> Create(CreateTaskViewModel request)
+{
+    if (!ModelState.IsValid)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
+        return BadRequest(ModelState);
+    }
 
+    try
+    {
         var task = await _taskService.CreateAsync(request);
 
         return Created($"/api/tasks/{task.Id}", task);
     }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, CreateTaskViewModel request)
+    catch (ArgumentException ex)
     {
-        if (!ModelState.IsValid)
+        return BadRequest(new
         {
-            return BadRequest(ModelState);
-        }
+            message = ex.Message
+        });
+    }
+}
 
+   [HttpPut("{id}")]
+public async Task<IActionResult> Update(int id, CreateTaskViewModel request)
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+
+    try
+    {
         var updated = await _taskService.UpdateAsync(id, request);
 
         if (!updated)
@@ -53,6 +65,14 @@ public class TasksApiController : ControllerBase
 
         return NoContent();
     }
+    catch (ArgumentException ex)
+    {
+        return BadRequest(new
+        {
+            message = ex.Message
+        });
+    }
+}
 [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
