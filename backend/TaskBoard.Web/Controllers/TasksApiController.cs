@@ -17,12 +17,12 @@ public class TasksApiController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
-    {
-        var tasks = await _taskService.GetAllAsync();
-        return Ok(tasks);
-    }
+public async Task<IActionResult> GetAll([FromQuery] TaskQuery query)
+{
+    var tasks = await _taskService.GetAllAsync(query);
 
+    return Ok(tasks);
+}
    [HttpPost]
 public async Task<IActionResult> Create(CreateTaskViewModel request)
 {
@@ -85,7 +85,7 @@ public async Task<IActionResult> MarkAsDone(int id)
 
     return NoContent();
 }
-[Authorize(Roles = "Admin")]
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
@@ -98,7 +98,7 @@ public async Task<IActionResult> MarkAsDone(int id)
 
         return NoContent();
     }
-    [Authorize(Roles = "Admin")]
+   
     [HttpDelete]
 public async Task<IActionResult> DeleteAll()
 {

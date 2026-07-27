@@ -5,18 +5,22 @@ using TaskBoard.Web.Interfaces;
 using TaskBoard.Web.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/Login";
-        options.AccessDeniedPath = "/Login";
-    });
+ .AddCookie(options =>
+{
+    options.LoginPath = "/Login";
+    options.AccessDeniedPath = "/Login";
 
+    options.Cookie.Name = "TaskBoardAuth";
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.None;
+});
 builder.Services.AddAuthorization();
 builder.Services.AddDbContext<TaskBoardDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -25,11 +29,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    options.AddPolicy("frontend", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("http://127.0.0.1:5500")
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 
@@ -61,12 +66,14 @@ app.UseExceptionHandler(errorApp =>
         });
     });
 });
-app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseCors("frontend");
+
 app.UseAuthentication();
-app.UseCors("AllowFrontend");
 
 app.UseAuthorization();
+
 
 app.MapStaticAssets();
 

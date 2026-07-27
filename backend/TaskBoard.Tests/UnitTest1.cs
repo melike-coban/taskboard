@@ -87,7 +87,7 @@ public async Task GetAllAsync_ShouldReturnAllTasks()
     });
 
     // Act
-    var result = await service.GetAllAsync();
+   var result = await service.GetAllAsync(new TaskQuery());
 
     // Assert
     Assert.Equal(2, result.Count);

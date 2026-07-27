@@ -1,244 +1,358 @@
 # TaskBoard
 
-Bu proje, uzaktan Full-Stack Staj Programı kapsamında geliştirilen **TaskBoard** isimli basit bir görev takip uygulamasıdır.
+## Proje Özeti
 
-## Proje Amacı
+TaskBoard, görevlerin oluşturulmasını, takip edilmesini ve yönetilmesini sağlayan full-stack bir görev takip uygulamasıdır.
 
-TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği ve ilerleyen günlerde düzenleyip silebileceği bir web uygulaması olarak geliştirilmektedir. Proje, HTML, CSS, JavaScript ve ASP.NET Core MVC teknolojileri kullanılarak adım adım oluşturulacaktır.
+- Kullanıcılar görev ekleyebilir, listeleyebilir, güncelleyebilir ve silebilir.
+- Görevler öncelik ve durum bilgileri ile yönetilir.
+- Görevler üzerinde arama ve filtreleme işlemleri yapılabilir.
+- Backend tarafında ASP.NET Core Web API kullanılmıştır.
+- Frontend ve backend arasında API iletişimi sağlanmıştır.
+- Veriler Entity Framework Core kullanılarak SQLite veritabanında saklanmaktadır.
+- Kullanıcı giriş sistemi ve rol bazlı yetkilendirme eklenmiştir.
+- Servis katmanı kullanılarak iş mantığı controller katmanından ayrılmıştır.
+- API tarafında filtreleme ve sayfalama desteği bulunmaktadır.
+- Proje Git ve GitHub kullanılarak versiyon kontrolü ile geliştirilmiştir.
 
-## Kullanılan Teknolojiler
+---
+
+# Kullanılan Teknolojiler
+
+## Frontend
 
 - HTML5
-- CSS3 _(ilerleyen günlerde eklenecek)_
-- JavaScript _(ilerleyen günlerde eklenecek)_
-- ASP.NET Core MVC _(ilerleyen günlerde eklenecek)_
+- CSS3
+- JavaScript
+- Fetch API
 
-## Yapılan Çalışmalar
+## Backend
 
-### Gün 1
+- C#
+- ASP.NET Core MVC
+- ASP.NET Core Web API
+- Entity Framework Core
 
-- Proje klasör yapısı oluşturuldu.
-- Temel HTML sayfası hazırlandı.
-- `header`, `main`, `section` ve `footer` etiketleri kullanılarak sayfa yapısı oluşturuldu.
-- İlk görev ekleme alanı hazırlandı.
-- GitHub reposu oluşturuldu ve ilk commit gerçekleştirildi.
+## Veritabanı
 
-### Gün 2
+- SQLite
 
-- Görev önceliği seçimi için `select` alanı eklendi.
-- Görev açıklaması için `textarea` alanı eklendi.
-- Görevleri listelemek amacıyla HTML tablosu oluşturuldu.
-- Tabloda `thead` ve `tbody` yapısı kullanıldı.
-- Form alanlarına `required`, `maxlength` ve `placeholder` özellikleri eklendi.
-- Tabloya üç örnek görev eklendi.
-- Form alanlarında `label` kullanılarak erişilebilirlik iyileştirildi.
+## Araçlar
 
-### Gün 3
+- Git
+- GitHub
+- Swagger
 
-- CSS dosyası (`style.css`) oluşturuldu ve HTML dosyasına bağlandı.
-- Sayfaya temel font, arka plan rengi ve boşluk düzeni eklendi.
-- Görev tablosu ve görev ekleme formu kart (card) görünümüne dönüştürüldü.
-- Öncelik seviyeleri için renkli badge sınıfları oluşturuldu.
-- Form butonuna hover efekti eklendi.
-- CSS değişkenleri kullanılarak tekrar eden renk ve boşluk değerleri düzenlendi.
-- Tablo okunabilirliğini artıracak satır boşlukları ve temel stiller eklendi.
+---
 
-### Gün 4
+# Özellikler
 
-- Dashboard bölümüne Toplam Görev, Açık Görev ve Tamamlanan görevleri gösteren KPI kartları eklendi.
-- KPI kartları CSS Grid kullanılarak düzenlendi.
-- Form ve görev listesi masaüstünde iki sütun, mobilde tek sütun olacak şekilde responsive hale getirildi.
-- Tablo için `overflow-x` özelliği eklenerek küçük ekranlarda yatay kaydırma desteği sağlandı.
-- Sayfanın 390px, 768px ve 1280px ekran genişliklerinde görünümü kontrol edildi.
+## Görev Yönetimi
 
-### Gün 5
+- Görev oluşturma
+- Görev listeleme
+- Görev güncelleme
+- Görev silme
+- Görev tamamlama
 
-- TaskBoard sayfası dashboard görünümüne dönüştürüldü.
-- KPI kartları güncellenerek görev istatistikleri gösterildi.
-- Görev listesi ve yeni görev formu kart yapısına dönüştürüldü.
-- Görev tablosuna 5 örnek görev eklendi.
-- Öncelik ve durum bilgileri renkli badge yapısıyla gösterildi.
-- Boş görev listesi için Empty State bölümü eklendi.
+## Arama ve Filtreleme
 
-### Gün 6
+Uygulamada görevler için:
 
-- JavaScript için `app.js` dosyası oluşturuldu ve HTML dosyasına bağlandı.
-- Formun `submit` olayı JavaScript ile yakalandı.
-- Kullanıcının girdiği görev başlığı ve öncelik bilgileri okunarak tabloya dinamik olarak eklendi.
-- Boş görev başlığı kontrolü yapılarak hatalı girişler engellendi.
-- Görev eklendikten sonra form temizlendi ve imleç tekrar görev başlığı alanına getirildi.
-- Toplam Görev ve Açık Görev KPI kartları otomatik güncellendi.
-- Görev sayısına göre Empty State görünümü kontrol edildi.
+- Başlığa göre arama
+- Duruma göre filtreleme
+- Önceliğe göre filtreleme
 
-### Gün 7
+özellikleri bulunmaktadır.
 
-- Görevler için `tasks` adında bir dizi (state) oluşturuldu.
-- `createTask()` fonksiyonu ile yeni görev nesneleri oluşturulacak şekilde düzenleme yapıldı.
-- `renderTasks()` fonksiyonu kullanılarak görev tablosu dinamik olarak oluşturuldu.
-- Yeni görevler doğrudan tabloya eklenmek yerine `tasks` dizisine eklenmeye başlandı.
-- Duruma göre filtreleme (Tümü, Açık, Tamamlandı) özelliği eklendi.
-- Önceliğe göre filtreleme özelliği eklendi.
-- Tamamla butonu ile görevlerin durumu silinmeden güncellenebilir hale getirildi.
-- Toplam Görev, Açık Görev ve Tamamlanan Görev KPI kartları `tasks` dizisi üzerinden otomatik hesaplanacak şekilde düzenlendi.
-- `map()`, `filter()` ve `find()` array metotları kullanılarak kod tekrarları azaltıldı.
+Desteklenen öncelik değerleri:
 
-### Gün 8
+- high
+- normal
+- low
 
-- Görevler localStorage kullanılarak tarayıcıya kaydedilecek şekilde düzenlendi.
-- Sayfa açılırken görevler localStorage üzerinden yüklenir hale getirildi.
-- JSON verisi güvenli şekilde okunarak olası parse hataları kontrol altına alındı.
-- `tasks.json` dosyası oluşturularak Fetch API ile örnek görevlerin okunması sağlandı.
-- `async/await` ve `try/catch` yapıları kullanılarak veri yükleme işlemleri gerçekleştirildi.
-- Örnek görevleri içeri aktarma özelliği eklendi.
-- LocalStorage verilerini temizleme özelliği eklendi.
-- Kullanıcıya yükleme ve hata durumları hakkında bilgilendirme mesajları gösterilecek şekilde düzenleme yapıldı.
+---
 
-### Gün 9
+# Sayfalama
 
-- `TaskBoard.Console` isimli C# Console projesi oluşturuldu.
-- Görevleri listeleme, ekleme ve çıkış işlemlerini içeren bir menü geliştirildi.
-- Kullanıcıdan görev başlığı ve öncelik bilgisi alınarak görevler `List<string>` içerisinde saklandı.
-- Boş görev başlığı kontrolü eklenerek hatalı girişler engellendi.
-- Görevler numaralı şekilde listelenecek şekilde düzenlendi.
-- Hatalı menü seçimlerinde kullanıcıya uyarı mesajı gösterildi.
-- Kod okunabilirliği artırmak amacıyla görev ekleme ve listeleme işlemleri metotlara ayrıldı.
+API tarafında sayfalama desteği bulunmaktadır.
 
-### Gün 10
-
-- `TaskItem` modeli oluşturularak görevler nesne tabanlı yapıya dönüştürüldü.
-- `TaskStatus` enumu eklenerek görev durumları yönetilebilir hale getirildi.
-- `TaskService` sınıfı oluşturularak görev ekleme, listeleme ve tamamlama işlemleri servis katmanına taşındı.
-- Console menüsü `TaskService` üzerinden çalışacak şekilde yeniden düzenlendi.
-- LINQ kullanılarak sadece açık görevleri listeleme özelliği eklendi.
-- Aynı başlıkla görev eklenmesi engellendi.
-- Görev tamamlandığında `CompletedAt` alanı otomatik olarak doldurulacak şekilde düzenleme yapıldı.
-
-### Gün 11
-
-- ASP.NET Core MVC kullanılarak `TaskBoard.Web` projesi oluşturuldu.
-- `TaskItem` modeli eklenerek görev verileri nesne tabanlı hale getirildi.
-- `TasksController` oluşturularak örnek görev listesi Controller üzerinden View'a gönderildi.
-- Razor View kullanılarak görevler dinamik olarak tabloda listelendi.
-- Bootstrap ile tablo tasarımı iyileştirildi.
-- Görev durumu ve öncelik bilgileri Bootstrap badge bileşenleri ile görsel olarak gösterildi.
-- `ViewData` kullanılarak sayfa başlığı dinamik hale getirildi.
-
-### Gün 12
-
-- CreateTaskViewModel oluşturularak form verileri için ayrı bir ViewModel kullanıldı.
-- Title alanına Required ve StringLength doğrulamaları eklendi.
-- Description alanı eklenerek maksimum 500 karakter sınırı tanımlandı.
-- TasksController içerisinde Create için GET ve POST action metotları oluşturuldu.
-- Create.cshtml sayfası asp-for tag helper'ları kullanılarak hazırlandı.
-- Validation Summary ve alan bazlı doğrulama mesajları eklendi.
-- Priority alanı select listesi olarak tasarlandı.
-- Başarılı form gönderiminde kullanıcı görev listesi sayfasına yönlendirildi.
-
-### Gün 13
-
-- ASP.NET Core Web API projesi geliştirilmeye devam edildi.
-- TasksApiController oluşturularak görev işlemleri API üzerinden yönetildi.
-- GET endpointi ile görevlerin listelenmesi sağlandı.
-- POST endpointi ile yeni görev ekleme işlemi gerçekleştirildi.
-- PATCH endpointi ile görevlerin tamamlandı durumuna geçirilmesi eklendi.
-- Swagger kurulumu yapılarak API endpointleri test edildi.
-- Endpointlerin doğru HTTP durum kodları ile çalıştığı doğrulandı.
-
-### Gün 14
-
-- Entity Framework Core projeye eklendi.
-- TaskBoardDbContext oluşturuldu ve TaskItems DbSet'i tanımlandı.
-- SQLite bağlantısı için appsettings.json dosyasına connection string eklendi.
-- Program.cs içerisinde DbContext yapılandırması gerçekleştirildi.
-- İlk migration oluşturularak veritabanı oluşturuldu.
-- API, static liste yerine Entity Framework Core üzerinden veritabanı kullanacak şekilde güncellendi.
-- TaskItem modeli için doğrulama ve varsayılan değer düzenlemeleri yapıldı.
-- Veritabanına başlangıç için örnek görev kayıtları eklendi.
-
-### Gün 15
-
-- Service katmanı oluşturularak iş mantığı controller dışına taşındı.
-- ITaskService arayüzü tanımlandı ve TaskService sınıfı geliştirildi.
-- Dependency Injection kullanılarak TaskService uygulamaya eklendi.
-- CRUD işlemleri (Listeleme, Ekleme, Güncelleme ve Silme) service katmanı üzerinden gerçekleştirildi.
-- Controller sadeleştirilerek yalnızca HTTP isteklerini yöneten bir yapı oluşturuldu.
-- Asenkron (async/await) metotlar kullanılarak veritabanı işlemleri düzenlendi.
-
-### Gün 16
-
-- Frontend ile ASP.NET Core Web API arasında bağlantı kuruldu.
-- API isteklerini yönetmek için `apiClient.js` oluşturuldu.
-- Görev listeleme işlemi API üzerinden gerçekleştirildi.
-- Yeni görev ekleme ve görev silme işlemleri API kullanılarak yapıldı.
-- Tüm görevleri silmek için yeni bir API endpointi geliştirildi.
-- Frontend, API'den gelen verilere göre KPI kartlarını güncelleyecek şekilde düzenlendi.
-- CORS yapılandırması yapılarak frontend ve backend iletişimi sağlandı.
-
-### Gün 17
-
-- Demo kullanıcı modeli oluşturuldu.
-- appsettings.json içerisine Admin ve User kullanıcıları eklendi.
-- Login ekranı geliştirildi.
-- Cookie Authentication yapılandırıldı.
-- Kullanıcı giriş işlemi Claims tabanlı hale getirildi.
-- Authorize özelliği ile korumalı sayfalar oluşturuldu.
-- Rol bazlı yetkilendirme uygulandı.
-- Admin kullanıcılarına silme yetkisi verildi.
-- User kullanıcılarının silme işlemi yapması engellendi.
-
-### Gün 18
-
-- Service katmanında Guard Clause kullanıldı.
-- Başlık alanı Trim() ile düzenlenerek kaydedildi.
-- ILogger ile oluşturma, güncelleme ve silme işlemleri loglandı.
-- Controller tarafında beklenen hatalar için uygun HTTP durum kodları döndürüldü.
-- Global Exception Handler eklendi.
-- Frontend tarafında API hata mesajları kullanıcıya gösterilecek şekilde düzenlendi.
-
-# Kurulum
-
-Projeyi klonladıktan sonra aşağıdaki komutları çalıştırın.
-
-```bash
-dotnet restore
-dotnet build
-dotnet test
-dotnet run --project backend/TaskBoard.Web
-```
-
-# Frontend
-
-Uygulama çalıştıktan sonra tarayıcıdan aşağıdaki adresi açın.
+Kullanılan parametreler:
 
 ```
-http://localhost:5063
+page
+pageSize
 ```
 
-API endpointleri:
+Örnek kullanım:
+
+```
+/api/tasks?page=1&pageSize=5
+```
+
+API cevabında:
+
+- Toplam kayıt sayısı
+- Mevcut sayfa numarası
+- Toplam sayfa sayısı
+
+bilgileri döndürülmektedir.
+
+---
+
+# Proje Yapısı
+
+## Frontend
+
+```
+frontend
+│
+├── index.html
+│
+├── css
+│   └── style.css
+│
+└── js
+    ├── app.js
+    └── apiClient.js
+```
+
+Frontend tarafında kullanıcı arayüzü oluşturulmuş ve backend API ile iletişim Fetch API kullanılarak sağlanmıştır.
+
+---
+
+## Backend
+
+```
+backend
+│
+└── TaskBoard.Web
+    │
+    ├── Controllers
+    ├── Services
+    ├── Interfaces
+    ├── Models
+    ├── ViewModels
+    ├── Data
+    └── Migrations
+```
+
+Backend katmanları:
+
+- **Controllers:** HTTP isteklerini yönetir.
+- **Services:** İş mantığını içerir.
+- **Models:** Veri modellerini temsil eder.
+- **Data:** Veritabanı bağlantısını sağlar.
+- **ViewModels:** Kullanıcıdan gelen verilerin yönetilmesini sağlar.
+
+---
+
+# API Endpointleri
+
+## Görevleri Listeleme
+
+GET
 
 ```
 /api/tasks
 ```
 
-# Kod Review Kontrol Listesi
+Desteklenen parametreler:
 
-- [x] Kod derleniyor.
-- [x] Testler başarılı çalışıyor.
-- [x] Anlamlı commit mesajları kullanıldı.
-- [x] Hata yönetimi eklendi.
-- [x] Loglama yapıldı.
-- [x] Validasyonlar kontrol edildi.
-- [x] Gizli bilgiler repoya eklenmedi.
+```
+search
+status
+priority
+page
+pageSize
+```
 
-# Connection String
+Örnek:
 
-Geliştirme ortamında SQLite kullanılmaktadır.
+```
+/api/tasks?priority=high&page=1&pageSize=5
+```
 
-Connection String bilgisi `appsettings.json` dosyasında bulunmaktadır.
+---
 
-Farklı bir veritabanı kullanılacaksa bu değer güncellenmelidir.
+## Görev Oluşturma
 
-# Bilinen Eksikler
+POST
 
-- Live Server üzerinden yapılan Admin işlemlerinde yetkilendirme nedeniyle 401 hatası alınabilir.
-- Frontend tarafında bazı geliştirmeler Gün 20 kapsamında tamamlanacaktır.
+```
+/api/tasks
+```
+
+---
+
+## Görev Güncelleme
+
+PUT
+
+```
+/api/tasks/{id}
+```
+
+---
+
+## Görevi Tamamlama
+
+PATCH
+
+```
+/api/tasks/{id}/done
+```
+
+---
+
+## Görev Silme
+
+DELETE
+
+```
+/api/tasks/{id}
+```
+
+---
+
+# Veritabanı
+
+Projede SQLite veritabanı kullanılmıştır.
+
+Entity Framework Core ile:
+
+- Veritabanı bağlantısı oluşturulmuştur.
+- Migration işlemleri yapılmıştır.
+- CRUD işlemleri gerçekleştirilmiştir.
+- Görev verileri kalıcı olarak saklanmaktadır.
+
+---
+
+# Kullanıcı Yetkilendirme
+
+Projede cookie authentication kullanılmıştır.
+
+Roller:
+
+- Admin
+- User
+
+Admin kullanıcıları:
+
+- Görev silebilir.
+- Yönetim işlemlerini gerçekleştirebilir.
+
+User kullanıcıları:
+
+- Yetkileri dahilinde işlem yapabilir.
+
+---
+
+# Hata Yönetimi ve Loglama
+
+Projede:
+
+- Model doğrulama işlemleri
+- Exception yönetimi
+- ILogger kullanımı
+
+uygulanmıştır.
+
+API tarafında uygun HTTP durum kodları döndürülmektedir.
+
+---
+
+# Kurulum
+
+Projeyi bilgisayarınıza aldıktan sonra backend klasörüne gidin:
+
+```bash
+cd backend/TaskBoard.Web
+```
+
+Gerekli paketleri yüklemek için:
+
+```bash
+dotnet restore
+```
+
+Projeyi derlemek için:
+
+```bash
+dotnet build
+```
+
+---
+
+# Çalıştırma
+
+Backend uygulamasını çalıştırmak için:
+
+```bash
+dotnet run
+```
+
+Frontend için:
+
+```
+frontend/index.html
+```
+
+dosyasını Live Server kullanarak açabilirsiniz.
+
+---
+
+# Test
+
+Testleri çalıştırmak için:
+
+```bash
+dotnet test
+```
+
+API kontrolü için:
+
+```
+/api/tasks
+```
+
+endpointi kullanılabilir.
+
+Örnek:
+
+```
+/api/tasks?page=1&pageSize=5
+```
+
+---
+
+# Kontrol Listesi
+
+- [x] Frontend ve backend bağlantısı yapıldı.
+- [x] REST API endpointleri oluşturuldu.
+- [x] CRUD işlemleri tamamlandı.
+- [x] SQLite veritabanı kullanıldı.
+- [x] Entity Framework Core kullanıldı.
+- [x] Kullanıcı yetkilendirme sistemi eklendi.
+- [x] Arama ve filtreleme özellikleri tamamlandı.
+- [x] Sayfalama desteği eklendi.
+- [x] Hata yönetimi yapıldı.
+- [x] Loglama sistemi eklendi.
+- [x] README final hale getirildi.
+
+---
+
+# Geliştirme Fırsatları
+
+- Daha gelişmiş sıralama seçenekleri eklenebilir.
+- Pagination arayüzü geliştirilebilir.
+- Bildirim sistemi eklenebilir.
+- Daha kapsamlı kullanıcı yönetimi yapılabilir.
+
+---
+
+# Geliştirici
+
+Melike Çoban
+
+Full-Stack Staj Projesi - TaskBoard

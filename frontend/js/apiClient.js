@@ -5,6 +5,7 @@ async function request(url, options = {}) {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     ...options,
   });
 
@@ -30,8 +31,25 @@ async function request(url, options = {}) {
 }
 
 const taskApi = {
-  getTasks() {
-    return request(API_URL);
+  getTasks(query = {}) {
+    const params = new URLSearchParams();
+
+    if (query.search) {
+      params.append("search", query.search);
+    }
+
+    if (query.status && query.status !== "all") {
+      params.append("status", query.status);
+    }
+
+    if (query.priority && query.priority !== "all") {
+      params.append("priority", query.priority);
+    }
+
+    params.append("page", query.page || 1);
+    params.append("pageSize", query.pageSize || 10);
+
+    return request(`${API_URL}?${params.toString()}`);
   },
 
   createTask(task) {
@@ -45,6 +63,11 @@ const taskApi = {
     return request(`${API_URL}/${id}`, {
       method: "PUT",
       body: JSON.stringify(task),
+    });
+  },
+  markAsDone(id) {
+    return request(`${API_URL}/${id}/done`, {
+      method: "PATCH",
     });
   },
 

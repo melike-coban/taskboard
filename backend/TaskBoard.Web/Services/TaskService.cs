@@ -19,12 +19,46 @@ public class TaskService : ITaskService
     _context = context;
     _logger = logger;
 }
+public async Task<PagedResult<TaskItem>> GetAllAsync(TaskQuery query)
+{
+    var tasks = _context.TaskItems.AsQueryable();
 
-    public async Task<List<TaskItem>> GetAllAsync()
+    if (!string.IsNullOrWhiteSpace(query.Search))
     {
-        return await _context.TaskItems.ToListAsync();
+        tasks = tasks.Where(t =>
+            t.Title.Contains(query.Search));
     }
 
+    if (!string.IsNullOrWhiteSpace(query.Status))
+    {
+        tasks = tasks.Where(t =>
+            t.Status == query.Status);
+    }
+
+    if (!string.IsNullOrWhiteSpace(query.Priority))
+    {
+        tasks = tasks.Where(t =>
+            t.Priority == query.Priority);
+    }
+
+    var totalCount = await tasks.CountAsync();
+
+    var items = await tasks
+        .OrderByDescending(t => t.CreatedAt)
+        .Skip((query.Page - 1) * query.PageSize)
+        .Take(query.PageSize)
+        .ToListAsync();
+
+    return new PagedResult<TaskItem>
+    {
+        Items = items,
+        TotalCount = totalCount,
+        Page = query.Page,
+        PageSize = query.PageSize,
+        TotalPages = (int)Math.Ceiling(
+            totalCount / (double)query.PageSize)
+    };
+}
     public async Task<TaskItem?> GetByIdAsync(int id)
     {
         return await _context.TaskItems.FirstOrDefaultAsync(t => t.Id == id);

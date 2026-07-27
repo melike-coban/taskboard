@@ -5,7 +5,7 @@ namespace TaskBoard.Web.Interfaces;
 
 public interface ITaskService
 {
-    Task<List<TaskItem>> GetAllAsync();
+    Task<PagedResult<TaskItem>> GetAllAsync(TaskQuery query);
     Task<TaskItem?> GetByIdAsync(int id);
     Task<TaskItem> CreateAsync(CreateTaskViewModel request);
     Task<bool> UpdateAsync(int id, CreateTaskViewModel request);

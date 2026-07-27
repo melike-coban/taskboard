@@ -49,6 +49,7 @@ public class LoginController : Controller
     new Claim(ClaimTypes.Name, user.Username),
     new Claim(ClaimTypes.Role, user.Role)
 };
+Console.WriteLine($"Giriş yapan kullanıcı: {user.Username}, Rol: {user.Role}");
 
 var identity = new ClaimsIdentity(
     claims,
@@ -60,6 +61,5 @@ await HttpContext.SignInAsync(
     CookieAuthenticationDefaults.AuthenticationScheme,
     principal);
 
-return RedirectToAction("Index", "Tasks");
-    }
-}
+return Redirect("http://127.0.0.1:5500/frontend/index.html");
+    }}

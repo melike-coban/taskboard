@@ -33,6 +33,10 @@
           <p id="done-count">1</p>
         </article>
       </section>
+      <div class="pagination-info">
+        <span id="total-records">Toplam kayıt: 0</span>
+        <span id="page-info">Sayfa 1 / 1</span>
+      </div>
       <section class="content-layout">
         <section class="card" aria-labelledby="task-list-title">
           <h2 id="task-list-title">Görevler</h2>
@@ -41,8 +45,8 @@
 
             <select id="status-filter">
               <option value="all">Tümü</option>
-              <option value="open">Açık</option>
-              <option value="done">Tamamlandı</option>
+              <option value="Open">Açık</option>
+              <option value="Done">Tamamlandı</option>
             </select>
             <label for="priority-filter">Öncelik</label>
 
@@ -52,6 +56,9 @@
               <option value="normal">Normal</option>
               <option value="low">Düşük</option>
             </select>
+            <label for="search-input">Ara</label>
+
+            <input type="text" id="search-input" placeholder="Görev ara..." />
           </div>
           <div class="table-wrapper">
             <table class="task-table">

@@ -14,6 +14,9 @@ const priorityFilter = document.querySelector("#priority-filter");
 const loadSampleBtn = document.querySelector("#load-sample-btn");
 const clearStorageBtn = document.querySelector("#clear-storage-btn");
 const message = document.querySelector("#message");
+const searchInput = document.querySelector("#search-input");
+const totalRecords = document.querySelector("#total-records");
+const pageInfo = document.querySelector("#page-info");
 
 let tasks = [];
 
@@ -132,7 +135,20 @@ function saveTasks() {
 }
 async function loadTasks() {
   try {
-    tasks = await taskApi.getTasks();
+    const response = await taskApi.getTasks({
+      search: searchInput.value,
+      status: statusFilter.value,
+      priority: priorityFilter.value,
+      page: 1,
+      pageSize: 10,
+    });
+
+    tasks = response.items;
+
+    totalRecords.textContent = `Toplam kayıt: ${response.totalCount}`;
+
+    pageInfo.textContent = `Sayfa ${response.page} / ${response.totalPages}`;
+
     renderTasks(tasks);
   } catch (error) {
     console.error(error);
@@ -150,18 +166,16 @@ async function loadSampleTasks() {
 
     const sampleTasks = await response.json();
 
-    sampleTasks.forEach((sampleTask) => {
-      const exists = tasks.find((task) => task.id === sampleTask.id);
+    for (const sampleTask of sampleTasks) {
+      await taskApi.createTask({
+        title: sampleTask.title,
+        priority: sampleTask.priority,
+      });
+    }
 
-      if (!exists) {
-        tasks.push(sampleTask);
-      }
-    });
+    await loadTasks();
 
-    saveTasks();
     message.textContent = "Örnek görevler başarıyla yüklendi.";
-
-    applyFilters();
   } catch (error) {
     message.textContent = error.message;
 
@@ -194,9 +208,10 @@ function applyFilters() {
   renderTasks(filteredTasks);
 }
 
-statusFilter.addEventListener("change", function () {
-  applyFilters();
-});
+statusFilter.addEventListener("change", loadTasks);
+
+priorityFilter.addEventListener("change", loadTasks);
+searchInput.addEventListener("input", loadTasks);
 
 tableBody.addEventListener("click", async function (event) {
   const id = Number(event.target.dataset.id);
@@ -218,12 +233,16 @@ tableBody.addEventListener("click", async function (event) {
   }
 
   if (event.target.classList.contains("complete-btn")) {
-    message.textContent =
-      "Tamamlama işlemi bir sonraki adımda API'ye bağlanacak.";
+    try {
+      await taskApi.markAsDone(id);
+
+      await loadTasks();
+
+      message.textContent = "Görev tamamlandı.";
+    } catch (error) {
+      message.textContent = error.message;
+    }
   }
-});
-priorityFilter.addEventListener("change", function () {
-  applyFilters();
 });
 
 loadTasks();
