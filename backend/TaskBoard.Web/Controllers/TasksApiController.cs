@@ -73,6 +73,18 @@ public async Task<IActionResult> Update(int id, CreateTaskViewModel request)
         });
     }
 }
+[HttpPatch("{id}/done")]
+public async Task<IActionResult> MarkAsDone(int id)
+{
+    var updated = await _taskService.MarkAsDoneAsync(id);
+
+    if (!updated)
+    {
+        return NotFound();
+    }
+
+    return NoContent();
+}
 [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)

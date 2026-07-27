@@ -218,3 +218,4 @@ C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\runti
 C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\melik\Documents\taskboard\backend\TaskBoard.Web\bin\Debug\net10.0\appsettings.example.json

@@ -97,4 +97,22 @@ _logger.LogInformation(
     _context.TaskItems.RemoveRange(_context.TaskItems);
     await _context.SaveChangesAsync();
 }
+public async Task<bool> MarkAsDoneAsync(int id)
+{
+    var task = await _context.TaskItems.FirstOrDefaultAsync(t => t.Id == id);
+
+    if (task == null)
+        return false;
+
+    _logger.LogInformation(
+        "Görev tamamlandı. Id: {Id}, Title: {Title}",
+        task.Id,
+        task.Title);
+
+    task.Status = "Done";
+
+    await _context.SaveChangesAsync();
+
+    return true;
+}
 }

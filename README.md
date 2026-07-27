@@ -194,3 +194,51 @@ TaskBoard, kullanıcıların görevlerini oluşturabildiği, listeleyebildiği v
 - Controller tarafında beklenen hatalar için uygun HTTP durum kodları döndürüldü.
 - Global Exception Handler eklendi.
 - Frontend tarafında API hata mesajları kullanıcıya gösterilecek şekilde düzenlendi.
+
+# Kurulum
+
+Projeyi klonladıktan sonra aşağıdaki komutları çalıştırın.
+
+```bash
+dotnet restore
+dotnet build
+dotnet test
+dotnet run --project backend/TaskBoard.Web
+```
+
+# Frontend
+
+Uygulama çalıştıktan sonra tarayıcıdan aşağıdaki adresi açın.
+
+```
+http://localhost:5063
+```
+
+API endpointleri:
+
+```
+/api/tasks
+```
+
+# Kod Review Kontrol Listesi
+
+- [x] Kod derleniyor.
+- [x] Testler başarılı çalışıyor.
+- [x] Anlamlı commit mesajları kullanıldı.
+- [x] Hata yönetimi eklendi.
+- [x] Loglama yapıldı.
+- [x] Validasyonlar kontrol edildi.
+- [x] Gizli bilgiler repoya eklenmedi.
+
+# Connection String
+
+Geliştirme ortamında SQLite kullanılmaktadır.
+
+Connection String bilgisi `appsettings.json` dosyasında bulunmaktadır.
+
+Farklı bir veritabanı kullanılacaksa bu değer güncellenmelidir.
+
+# Bilinen Eksikler
+
+- Live Server üzerinden yapılan Admin işlemlerinde yetkilendirme nedeniyle 401 hatası alınabilir.
+- Frontend tarafında bazı geliştirmeler Gün 20 kapsamında tamamlanacaktır.
